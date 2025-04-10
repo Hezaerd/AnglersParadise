@@ -6,22 +6,14 @@ import com.hezaerd.util.Log;
 import com.hezaerd.util.Wisdom;
 import net.fabricmc.api.ModInitializer;
 
-import net.minecraft.util.Identifier;
-
 public class AnglersParadise implements ModInitializer {
-	public static final String MOD_ID = "anglersparadise";
+    @Override
+    public void onInitialize() {
+        ModItemGroups.init();
+        ModItems.init();
 
-	@Override
-	public void onInitialize() {
-		ModItemGroups.init();
-		ModItems.init();
+        Wisdom.spread();
 
-		Wisdom.spread();
-
-		Log.i("Angler's Paradise initialized!");
-	}
-	
-	public static Identifier id(String path) {
-		return Identifier.of(MOD_ID, path);
-	}
+        Log.i("Angler's Paradise initialized!");
+    }
 }

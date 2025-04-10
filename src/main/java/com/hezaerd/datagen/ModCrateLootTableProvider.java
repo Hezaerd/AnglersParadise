@@ -23,7 +23,7 @@ public class ModCrateLootTableProvider extends SimpleFabricLootTableProvider {
 
     @Override
     public void accept(BiConsumer<RegistryKey<LootTable>, LootTable.Builder> lootTableBiConsumer) {
-        lootTableBiConsumer.accept(ModLootTables.WOOD_CRATE, LootTable.builder()
+        lootTableBiConsumer.accept(ModLootTables.WOODEN_CRATE, LootTable.builder()
                 .pool(LootPool.builder() // One pool
                         .rolls(ConstantLootNumberProvider.create(2.0f)) // That has two rolls
                         .with(ItemEntry.builder(Items.DIAMOND) // With an entry that has diamond(s)

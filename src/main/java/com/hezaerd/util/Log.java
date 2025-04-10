@@ -1,11 +1,10 @@
 package com.hezaerd.util;
 
-import com.hezaerd.AnglersParadise;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Log {
-    private static final Logger logger = LogManager.getLogger(AnglersParadise.MOD_ID);
+    private static final Logger logger = LogManager.getLogger(ModLib.MOD_ID);
     private static final boolean debug = "true".equals(System.getProperty("debug"));
 
     public static void i(String s) {

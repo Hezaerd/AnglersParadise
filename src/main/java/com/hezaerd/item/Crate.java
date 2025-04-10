@@ -18,9 +18,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
 public class Crate extends Item {
-    private ItemStack item = ItemStack.EMPTY;
     private final RegistryKey<LootTable> lootTable;
-    
+    private ItemStack item = ItemStack.EMPTY;
+
     public Crate(Settings settings, RegistryKey<LootTable> lootTable) {
         super(settings.maxCount(16));
         this.lootTable = lootTable;
@@ -38,16 +38,16 @@ public class Crate extends Item {
             if (!this.item.isEmpty()) {
                 ItemStack itemToGive = this.item.copy();
                 this.item = ItemStack.EMPTY;
-                
+
                 if (!player.isCreative())
                     heldStack.decrement(1);
-                
+
                 player.giveItemStack(itemToGive);
             } else {
                 Log.w("Failed to generate loot from loot table {}", this.lootTable.getValue());
             }
         }
-        
+
         return ActionResult.SUCCESS;
     }
 
@@ -55,16 +55,16 @@ public class Crate extends Item {
      * Generates loot from the loot table (if set) using the world's built-in randomness.
      * The resulting loot is stored in the {@code item} field.
      *
-     * @param world The server world.
+     * @param world  The server world.
      * @param player The player opening the crate.
-     * @param hand The hand used to open the crate.
+     * @param hand   The hand used to open the crate.
      */
     private void generateItem(ServerWorld world, PlayerEntity player, Hand hand) {
         if (this.lootTable != null) {
             LootTable lootTable = world.getServer()
                     .getReloadableRegistries()
                     .getLootTable(this.lootTable);
-            
+
             // Trigger advancement
             if (player instanceof ServerPlayerEntity serverPlayerEntity) {
                 Criteria.PLAYER_GENERATES_CONTAINER_LOOT.trigger(serverPlayerEntity, this.lootTable);
