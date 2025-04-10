@@ -5,11 +5,11 @@
 	"name": "Angler's Paradise",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"Hezaerd"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://hezaerd.com",
+		"sources": "https://github.com/Hezaerd/anglersparadise"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/anglersparadise/icon.png",
@@ -18,19 +18,12 @@
 		"main": [
 			"com.hezaerd.AnglersParadise"
 		],
-		"client": [
-			"com.hezaerd.AnglersParadiseClient"
-		],
 		"fabric-datagen": [
 			"com.hezaerd.AnglersParadiseDataGenerator"
 		]
 	},
 	"mixins": [
-		"anglersparadise.mixins.json",
-		{
-			"config": "anglersparadise.client.mixins.json",
-			"environment": "client"
-		}
+		"anglersparadise.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.12",

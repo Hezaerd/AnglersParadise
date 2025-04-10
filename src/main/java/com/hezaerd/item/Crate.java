@@ -19,10 +19,11 @@ import net.minecraft.world.World;
 
 public class Crate extends Item {
     private ItemStack item = ItemStack.EMPTY;
-    private RegistryKey<LootTable> lootTable;
+    private final RegistryKey<LootTable> lootTable;
     
-    public Crate(Settings settings) {
+    public Crate(Settings settings, RegistryKey<LootTable> lootTable) {
         super(settings.maxCount(16));
+        this.lootTable = lootTable;
     }
 
     @Override
@@ -87,14 +88,5 @@ public class Crate extends Item {
                 }
             };
         }
-    }
-
-    /**
-     * Sets the loot table for this crate to use when opened.
-     *
-     * @param lootTable The RegistryKey for the loot table.
-     */
-    public void setLootTable(RegistryKey<LootTable> lootTable) {
-        this.lootTable = lootTable;
     }
 }
