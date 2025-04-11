@@ -1,0 +1,177 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Cursor Rules for Minecraft Modding with Fabric
+
+This document outlines a set of rules for the Cursor IDE to assist in Minecraft mod development using the Fabric API and Java 21. These rules aim to automate common tasks, enforce best practices, and provide helpful suggestions to improve code quality and efficiency.
+
+## General Conventions
+
+-   **Code Style**: Follow Google Java Style Guide.
+-   **Naming Conventions**:
+    -   Classes: `PascalCase` (e.g., `MyBlock`, `MyItem`).
+    -   Methods/Variables: `camelCase` (e.g., `getBlock`, `getItem`).
+    -   Constants: `ALL_CAPS` (e.g., `MAX_VALUE`, `DEFAULT_SIZE`).
+-   **Java Version**: Java 21.
+
+## Rule Categories
+
+### 1. Loot Table Rules
+
+-   **Description**: Automate the creation and validation of loot tables.
+-   **Trigger**: New JSON file created in `data/<modid>/loot_tables/`.
+-   **Action**:
+    1.  Suggest creating a corresponding `LootTableProvider` class.
+    2.  Pre-populate the class with boilerplate code.
+    3.  Check the JSON file for valid format.
+-   **Example**:
+    ```java
+    package com.example.modid.data;
+
+    import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+    import net.fabricmc.fabric.api.datagen.v1.provider.FabricLootTableProvider;
+    import net.minecraft.loot.LootTable;
+    import net.minecraft.loot.LootTableGenerator;
+    import net.minecraft.util.Identifier;
+
+    import java.util.function.BiConsumer;
+
+    public class ModLootTableProvider extends FabricLootTableProvider {
+        protected ModLootTableProvider(FabricDataOutput dataOutput) {
+            super(dataOutput);
+        }
+
+        @Override
+        public void generate(BiConsumer<Identifier, LootTable.Builder> consumer) {
+            // Example: Generate loot table for a custom block
+            // consumer.accept(new Identifier("modid", "blocks/my_block"), LootTableGenerator.createSimpleTable(MyBlock.MY_BLOCK));
+        }
+    }
+    ```
+
+### 2. Recipe Rules
+
+-   **Description**: Ensure custom recipe serializers are correctly registered and used.
+-   **Trigger**: Recipe JSON file saved.
+-   **Action**:
+    1.  Check if a custom recipe serializer is registered (if applicable).
+    2.  Warn if it's missing.
+-   **Example**:
+    -   If a recipe JSON uses `"type": "modid:my_recipe"`, ensure that `MyRecipeSerializer` is registered in the mod.
+
+### 3. Model Rules
+
+-   **Description**: Enforce naming conventions and validate texture references in block/item models.
+-   **Trigger**: New block/item model JSON file created.
+-   **Action**:
+    1.  Check if the file name follows the correct naming conventions.
+    2.  Verify that all referenced textures exist.
+-   **Example**:
+    -   Model file name: `block/my_block.json` or `item/my_item.json`.
+    -   Check if textures referenced in the JSON exist in `assets/<modid>/textures/`.
+
+### 4. Advancement Rules
+
+-   **Description**: Suggest relevant criteria based on mod functionality when creating new advancements.
+-   **Trigger**: New advancement JSON file created.
+-   **Action**:
+    1.  Suggest including relevant criteria based on the mod's functionality.
+-   **Example**:
+    -   If the mod adds a new block, suggest an advancement for obtaining the block.
+
+### 5. Mixin Rules
+
+-   **Description**: Prevent runtime crashes by validating target classes and methods in Mixins.
+-   **Trigger**: Creating a new Mixin.
+-   **Action**:
+    1.  Check if the target class and method exist.
+    2.  Provide a warning if they don't.
+-   **Example**:
+    -   Verify that `@Inject(at = @At("HEAD"), method = "methodName")` targets an existing method in the target class.
+
+### 6. Registry Rules
+
+-   **Description**: Ensure correct formatting and naming conventions for registered blocks and items.
+-   **Trigger**: Block or item registration.
+-   **Action**:
+    1.  Check if the `Identifier` is correctly formatted and follows naming conventions.
+-   **Example**:
+    -   `Registry.register(Registries.BLOCK, new Identifier("modid", "my_block"), myBlock);`
+
+### 7. Language File Rules
+
+-   **Description**: Prevent conflicts by verifying new language entries do not overlap with existing entries or vanilla keys.
+-   **Trigger**: New language entry added.
+-   **Action**:
+    1.  Check new language entries to verify they don't overlap with existing entries or vanilla keys.
+-   **Example**:
+    -   Avoid duplicate keys in `en_us.json`.
+
+### 8. Data Provider Rules
+
+-   **Description**: Suggest correct inheritance and method overrides when implementing a custom data provider.
+-   **Trigger**: Implementing a custom data provider.
+-   **Action**:
+    1.  Suggest the correct inheritance and method overrides.
+-   **Example**:
+    ```java
+    package com.example.modid.data;
+
+    import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+    import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+
+    public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
+        protected ModBlockLootTableProvider(FabricDataOutput dataOutput) {
+            super(dataOutput);
+        }
+
+        @Override
+        protected void generateBlockLootTables() {
+            // Example: Generate loot table for a custom block
+            // addDrop(MyBlock.MY_BLOCK);
+        }
+    }
+    ```
+
+## Java 21 Features
+
+-   **Virtual Threads**: Use virtual threads for managing concurrent tasks, especially for network operations or asynchronous data processing.
+-   **Pattern Matching for switch**: Simplify complex conditional logic when working with different object types.
+-   **String Templates**: Create more readable and maintainable string constructions, especially when building JSON or other data formats.
+-   **Sequenced Collections**: Use if needing to operate on ordered collections in a first-in-first-out manner.
+-   **Unnamed Variables and Patterns**: Use where variable names are not needed to simplify the code.
+
+## Example Usage of Java 21 Features
+
+### String Templates
+
+```java
+String name = "My Block";
+String id = "my_block";
+String json = STR."\{"name": "\{name}", "id": "\{id}"\}";
+System.out.println(json);
+```
+
+### Pattern Matching
+
+```java
+Object obj = getItem();
+switch (obj) {
+    case String s -> System.out.println("It's a string: " + s);
+    case Integer i -> System.out.println("It's an integer: " + i);
+    default -> System.out.println("It's something else.");
+}
+```
+
+## Additional Notes
+
+-   Follow Fabric API best practices for block/item registration, events, networking, etc.
+-   Use Fabric's data generation API for loot tables, recipes, models, and advancements.
+-   Utilize Fabric's Mixin system carefully and document them thoroughly.
+-   Write JUnit tests for core logic, especially data generation.
+-   Optimize data generation code for speed and efficiency.
+-   Adhere to SOLID principles where applicable.
+
+```
