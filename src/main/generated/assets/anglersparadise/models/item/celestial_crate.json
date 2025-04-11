@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "anglersparadise:item/savanna_crate"
+    "layer0": "anglersparadise:item/celestial_crate"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "anglersparadise:item/beach_crate"
+    "layer0": "anglersparadise:item/dungeon_crate"
   }
 }

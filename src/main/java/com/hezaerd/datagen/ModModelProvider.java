@@ -23,27 +23,22 @@ public class ModModelProvider extends FabricModelProvider {
     }
     
     private void generateCratesItemModels(ItemModelGenerator itemModelGenerator) {
+        // - Generic
         itemModelGenerator.register(ModItems.WOODEN_CRATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.IRON_CRATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.GOLDEN_CRATE, Models.GENERATED);
+        // - Biomes
         itemModelGenerator.register(ModItems.OCEAN_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEEP_OCEAN_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.RIVER_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.BEACH_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.FOREST_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.PLAINS_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.SWAMP_CRATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.JUNGLE_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.SNOW_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.TAIGA_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DESERT_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.SAVANNA_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.BADLANDS_CRATE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MIRAGE_CRATE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.FROZEN_CRATE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SLIMY_CRATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.FLOWER_CRATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.SHROOM_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.MOUNTAIN_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.CAVE_CRATE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.LUSH_CAVE_CRATE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LUSH_CRATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.DEEP_DARK_CRATE, Models.GENERATED);
+        // - Other
+        itemModelGenerator.register(ModItems.CELESTIAL_CRATE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DUNGEON_CRATE, Models.GENERATED);
     }
 }
