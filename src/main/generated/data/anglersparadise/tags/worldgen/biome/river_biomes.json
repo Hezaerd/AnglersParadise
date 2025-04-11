@@ -1,0 +1,10 @@
+{
+  "values": [
+    {
+      "id": "minecraft:is_river",
+      "required": false
+    },
+    "minecraft:river",
+    "minecraft:frozen_river"
+  ]
+}

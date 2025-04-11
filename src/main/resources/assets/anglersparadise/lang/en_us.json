@@ -1,4 +1,26 @@
 {
   "itemGroup.anglersparadise": "Angler's Paradise",
-  "item.anglersparadise.wooden_crate": "Wooden Crate"
+
+  "item.anglersparadise.wooden_crate": "Wooden Crate",
+  "item.anglersparadise.iron_crate": "Iron Crate",
+  "item.anglersparadise.golden_crate": "Golden Crate",
+  "item.anglersparadise.ocean_crate": "Ocean Crate",
+  "item.anglersparadise.deep_ocean_crate": "Deep Ocean Crate",
+  "item.anglersparadise.river_crate": "River Crate",
+  "item.anglersparadise.beach_crate": "Beach Crate",
+  "item.anglersparadise.forest_crate": "Forest Crate",
+  "item.anglersparadise.plains_crate": "Plains Crate",
+  "item.anglersparadise.swamp_crate": "Swamp Crate",
+  "item.anglersparadise.jungle_crate": "Jungle Crate",
+  "item.anglersparadise.snow_crate": "Snow Crate",
+  "item.anglersparadise.taiga_crate": "Taiga Crate",
+  "item.anglersparadise.desert_crate": "Desert Crate",
+  "item.anglersparadise.savanna_crate": "Savanna Crate",
+  "item.anglersparadise.badlands_crate": "Badlands Crate",
+  "item.anglersparadise.flower_crate": "Flower Crate",
+  "item.anglersparadise.shroom_crate": "Shroom Crate",
+  "item.anglersparadise.mountain_crate": "Mountain Crate",
+  "item.anglersparadise.cave_crate": "Cave Crate",
+  "item.anglersparadise.lush_cave_crate": "Lush Cave Crate",
+  "item.anglersparadise.deep_dark_crate": "Deep Dark Crate"
 }
